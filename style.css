@@ -1,0 +1,352 @@
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            color: #e6e6e6;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: #1a1a2e; /* Added fallback background color */
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background: #16213e;
+            color: white;
+            padding: 1rem 1.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px; /* Increased max-width for better laptop display */
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 1rem; /* Added padding for better spacing */
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            white-space: nowrap; /* Prevent title wrapping */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap; /* Allow nav items to wrap on smaller screens */
+        }
+
+        nav a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        section {
+            max-width: 1200px; /* Consistent max-width with navbar */
+            margin: 5rem auto 2rem;
+            padding: 1rem 1.5rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        section h2 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        #about {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap; /* Allow wrapping for smaller screens */
+        }
+
+        .about-content {
+            flex: 1;
+            text-align: left;
+            min-width: 300px; /* Ensure content doesn't collapse too much */
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #e6e6e6; /* Changed to match body text color */
+        }
+
+        .about-image {
+            flex: 0 0 200px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #about img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #00d4ff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cv-button {
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+
+        .cv-button:hover {
+            background:lightgrey;
+            color: white;
+        }
+
+        .skills-container {
+            perspective: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .skill-card {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .skill-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .skill-card-front, .skill-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card-front {
+            background: #00d4ff;
+            color: #1a1a2e;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .skill-card-back {
+            background: lightgrey;
+            color: white;
+            transform: rotateY(180deg);
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-card h3 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            margin-bottom: 0.5rem;
+            color: #e6e6e6; /* Changed to match body text color */
+        }
+
+        .project-card a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        #contact p {
+            text-align: center;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem;
+            border-radius: 5px;
+            color: #e6e6e6; /* Changed to match body text color */
+        }
+
+        #contact a {
+            color: #00d4ff; /* Consistent link color */
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #16213e;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            nav h1 {
+                font-size: 1.6rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            nav h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 0.8rem;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            section {
+                margin: 4rem 1rem 1rem;
+            }
+
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-content {
+                text-align: center;
+                min-width: 100%;
+            }
+
+            .about-image {
+                flex: none;
+            }
+
+            #about img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .skill-card {
+                width: 100px;
+                height: 100px;
+            }
+
+            .skill-card-front, .skill-card-back {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav h1 {
+                font-size: 1.3rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+
+            .cv-button {
+                padding: 0.6rem 1rem;
+            }
+
+            .skill-card {
+                width: 80px;
+                height: 80px;
+            }
+
+            .skill-card-front, .skill-card-back {
+                font-size: 0.7rem;
+            }
+
+            .project-card {
+                padding: 1rem;
+            }
+        }
